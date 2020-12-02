@@ -6,7 +6,7 @@
     "strictNullChecks": false,
     "allowJs": true,
     "checkJs": true,
-    "outDir": "./02.12.2020/build",
+    "outDir": "./build",
     "rootDir": "src",
     "removeComments": true,
     "strict": true,

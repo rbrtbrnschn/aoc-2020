@@ -2,7 +2,7 @@ const numbersArr = `1914 1931 1892 1584 1546 1988 1494 1709 1624 1755 1849 1430 
 `
 const arr = numbersArr.split(" ");
 const parsedArr = arr.map((num) => parseInt(num));
-let table = [];
+let table: any = [];
 parsedArr.forEach((j) => {
     parsedArr.forEach((k) => {
         if (j + k == 2020) {
