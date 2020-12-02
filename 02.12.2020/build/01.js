@@ -2,7 +2,7 @@
 exports.__esModule = true;
 var input_1 = require("./input");
 var validPasswords = 0;
-var performanceStart = new Date().getMilliseconds();
+console.time("performance");
 for (var _i = 0, input_2 = input_1["default"]; _i < input_2.length; _i++) {
     var line = input_2[_i];
     // Loop from @dinroRunner
@@ -15,7 +15,5 @@ for (var _i = 0, input_2 = input_1["default"]; _i < input_2.length; _i++) {
     if (hasMin && !overMax)
         validPasswords++;
 }
-var performanceEnd = new Date().getMilliseconds();
-var timeBetween = Math.abs(performanceStart - performanceEnd);
-console.log("Took: " + timeBetween + "ms");
+console.timeEnd("performance");
 console.log("Valid passwords:" + validPasswords);

@@ -1,3 +1,4 @@
+console.time("formatting raw data");
 const input = `1-14 b: bbbbbbbbbbbbbbbbbbb
 3-14 v: vvpvvvmvvvvvvvv
 2-5 m: mfvxmmm
@@ -998,5 +999,5 @@ const input = `1-14 b: bbbbbbbbbbbbbbbbbbb
 8-9 q: qssqqxqqcqqgkzbq
 3-8 m: tmmmmmmmmmmmj
 2-5 f: mmcfxtk`;
-
+console.timeEnd("formatting raw data")
 export default input.split("\n");

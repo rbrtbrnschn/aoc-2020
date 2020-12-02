@@ -1,7 +1,7 @@
 import input from "./input";
 let validPasswords = 0;
 
-const performanceStart = new Date().getMilliseconds();
+console.time("performance");
 for (let line of input) {
     // Loop from @dinroRunner
     const [check, pass] = line.split(": ");
@@ -17,7 +17,6 @@ for (let line of input) {
 
     if (hasMin && !overMax) validPasswords++;
 }
-const performanceEnd = new Date().getMilliseconds();
-const timeBetween = Math.abs(performanceStart - performanceEnd);
-console.log(`Took: ${timeBetween}ms`)
+
+console.timeEnd("performance")
 console.log(`Valid passwords:${validPasswords}`);
