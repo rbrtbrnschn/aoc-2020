@@ -611,12 +611,12 @@ dark green bags contain 2 dark blue bags.
 dark blue bags contain 2 dark violet bags.
 dark violet bags contain no other bags.`;
 
-const testing2Input = `shiny gold bags contain 1 dark olive bags, 2 vibrant plum bags.
+const testing2Input = `shiny gold bags contain 1 dark olive bag, 2 vibrant plum bags.
 faded blue bags contain no other bags.
 dotted black bags contain no other bags.
-vibrant plum bags contain 11 other bags, 5 faded blue bags and 6 dotted black bags.
-dark olive bags contain 7 other bags, 3 faded blue bags and 4 dotted black bags.`;
+vibrant plum bags contain 5 faded blue bags, 6 dotted black bags.
+dark olive bags contain 3 faded blue bags, 4 dotted black bags.`;
 
-const isTesting = true;
-const input = !isTesting ? properInput : testing2Input;
+const isTesting = false;
+const input = !isTesting ? properInput : testingInput;
 export default input;

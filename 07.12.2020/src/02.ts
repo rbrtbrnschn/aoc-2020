@@ -25,14 +25,13 @@ function createEnum(input: Array<Array<string>>): Record<string, Record<string, 
 const dict = createEnum(splitInput);
 
 function getBagsNeededForBagType(type: string = "shiny gold bags"): number {
-    // console.log(type, dict[type]);
-    const mostOutterBag = dict[type] as any;
-    if (!mostOutterBag) {
+    if (type === undefined || type === null || !type) {
         console.log(type);
         throw new Error("Misspelled getBagsNeededForBagType @RequestParam type: string");
     }
+    const mostOutterBag = dict[type] as any;
     let history: Array<string> = [];
-    let currentAmmount = 0;
+    let currentAmmount = 1;
     sub(mostOutterBag);
 
     function sub(mostOutterBag: Record<string, number>): void {
@@ -41,12 +40,13 @@ function getBagsNeededForBagType(type: string = "shiny gold bags"): number {
         subEntries.forEach(([key, amount], k) => {
             const subKey = dict[key];
 
-            currentAmmount = (currentAmmount + 1) * amount;
+            currentAmmount = (currentAmmount) * amount;
             if (!key) return
             else sub(subKey);
         })
     }
     return currentAmmount;
 }
+console.log(dict)
 console.log(getBagsNeededForBagType());
 // part 1 - 222
