@@ -31,9 +31,6 @@ function writeMap(input) {
     });
     return map;
 }
-const map = writeMap(vPairs);
-const baggageClaim = ["shiny gold bags"];
-let prev = 1;
 function llooper(map, bagType) {
     const mainBag = map.get(bagType);
     Object.entries(mainBag).forEach(([key, amount], k) => {
@@ -43,10 +40,12 @@ function llooper(map, bagType) {
         llooper(map, key);
     });
 }
+const map = writeMap(vPairs);
+const baggageClaim = ["shiny gold bags"];
 llooper(map, "shiny gold bags");
 let newArr = 1;
 let total = 0;
-const all = baggageClaim.map((value, index) => {
+baggageClaim.map((value, index) => {
     const bag = map.get(value);
     const entries = Object.entries(bag);
     entries.forEach(([key, amount], index) => {
@@ -54,4 +53,20 @@ const all = baggageClaim.map((value, index) => {
         newArr = newArr * amount;
     });
 });
-console.log(total);
+let tempArr = ["shiny gold bags"];
+let total2 = 0;
+while (tempArr.length) {
+    tempArr.shift();
+    total2++;
+    baggageClaim.forEach((value, index) => {
+        console.log("WORKING ON", value);
+        const bag = map.get(value);
+        const bagEntries = Object.entries(bag);
+        bagEntries.forEach(([key, amount], index) => {
+            for (let i = 0; i < amount; i++) {
+                tempArr.push(key);
+            }
+        });
+    });
+}
+console.log(total2);

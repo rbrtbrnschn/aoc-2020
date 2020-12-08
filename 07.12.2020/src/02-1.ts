@@ -41,6 +41,7 @@ function llooper(map: Map<string, Record<string, number>>, bagType: string) {
 const map = writeMap(vPairs);
 const baggageClaim = ["shiny gold bags"]
 llooper(map, "shiny gold bags");
+// console.log(baggageClaim);
 
 let newArr = 1;
 let total = 0;
@@ -53,4 +54,21 @@ baggageClaim.map((value, index) => {
         newArr = newArr * amount;
     })
 })
-console.log(total);
+// console.log(total);
+
+let tempArr = ["shiny gold bags"]
+let total2 = 0;
+while (tempArr.length) {
+    tempArr.shift();
+    total2++;
+    baggageClaim.forEach((value, index) => {
+        const bag = map.get(value);
+        const bagEntries = Object.entries(bag);
+        bagEntries.forEach(([key, amount], index) => {
+            for (let i = 0; i < amount; i++) {
+                tempArr.push(key);
+            }
+        })
+    })
+}
+console.log(total2);
