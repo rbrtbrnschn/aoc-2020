@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const properInput = `acc +8
+let properInput = `acc +8
 nop +139
 nop +383
 jmp +628
@@ -646,7 +646,7 @@ acc +35
 nop -584
 acc -12
 jmp +1`;
-const sampleInput = `nop +0
+let sampleInput = `nop +0
 acc +1
 jmp +4
 acc +3
@@ -655,6 +655,12 @@ acc -99
 acc +1
 jmp -4
 acc +6`;
-const isTesting = false;
-const input = !isTesting ? properInput : sampleInput;
+let testingInput = `nop 0
+nop 0
+acc 1
+jmp 2
+acc 1
+jmp -2`;
+const isTesting = true;
+const input = !isTesting ? properInput : testingInput;
 exports.default = input.split("\n");

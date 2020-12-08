@@ -1,4 +1,4 @@
-const properInput = `acc +8
+let properInput = `acc +8
 nop +139
 nop +383
 jmp +628
@@ -643,9 +643,9 @@ acc +16
 acc +35
 nop -584
 acc -12
-jmp +1`;
+jmp +1`; // No Accumulator Value...
 
-const sampleInput = `nop +0
+let sampleInput = `nop +0
 acc +1
 jmp +4
 acc +3
@@ -653,8 +653,15 @@ jmp -3
 acc -99
 acc +1
 jmp -4
-acc +6`;
+acc +6`; // Expected Accumulator Value 1; Works;
+
+let testingInput = `nop 0
+nop 0
+acc 1
+jmp 2
+acc 1
+jmp -2` // Expected Accumulator Value 1; Works;
 
 const isTesting = false;
-const input = !isTesting ? properInput : sampleInput;
+const input = !isTesting ? properInput : testingInput;
 export default input.split("\n");
