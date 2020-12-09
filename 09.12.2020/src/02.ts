@@ -25,21 +25,40 @@ function isSum(pointer: number, _x: number = 0) {
     let index = x;
     let _isSum = false;
 
-    const reduced = range.reduce((prev, acc) => {
+    range.reduce((prev, acc) => {
+        index++;
         const sum = prev + acc;
         const __isSum = sum === input[pointer];
         if (__isSum) {
             _isSum = true;
             desiredRange = [x, index];
         };
-        index++;
+
         return sum;
     })
-    if (_isSum) console.log(desiredRange)
-    return true;
+    return desiredRange;
 }
 
 for (let i = 0; i < pointer; i++) {
-    isSum(pointer, i);
+    const range = isSum(pointer, i); // logs range of [444, 459]
+    if (range.length) {
+        console.log(range);
+        let map = [];
+        for (let i = range[0]; i <= range[1]; i++) {
+            if (i === 444 || i === 460) console.log(`${i}: ${input[i]}`)
+            map.push(input[i]);
+        }
+        const lowest = map.reduce((prev, acc) => acc < prev ? acc : prev);
+        const highest = map.reduce((prev, acc) => acc > prev ? acc : prev);
+        console.log("highest:", highest);
+        console.log("lowest:", lowest);
+
+        console.log("sum of low and high:", lowest + highest); // lowest of range + highest of range aka puzzle answer
+        console.log("adding up each element of map:", map.reduce((prev, acc) => prev + acc)); // adding up each of map's contents which returns the same as below
+        console.log("validating against:", input[pointer]); // which is the result i got from part 1 which was correct
+        //TODO now even though I make sure by reducing the map to a sum, that that equals the result(input[pointer]);
+        //TODO adding up lowest and highest of sad range is still wrong
+
+    }
 }
-console.log(input[444] + input[459]) 
+

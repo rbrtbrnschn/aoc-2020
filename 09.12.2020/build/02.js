@@ -24,7 +24,8 @@ function isSum(pointer, _x = 0) {
     let desiredRange = [];
     let index = x;
     let _isSum = false;
-    const reduced = range.reduce((prev, acc) => {
+    range.reduce((prev, acc) => {
+        index++;
         const sum = prev + acc;
         const __isSum = sum === input[pointer];
         if (__isSum) {
@@ -32,14 +33,26 @@ function isSum(pointer, _x = 0) {
             desiredRange = [x, index];
         }
         ;
-        index++;
         return sum;
     });
-    if (_isSum)
-        console.log(desiredRange);
-    return true;
+    return desiredRange;
 }
 for (let i = 0; i < pointer; i++) {
-    isSum(pointer, i);
+    const range = isSum(pointer, i);
+    if (range.length) {
+        console.log(range);
+        let map = [];
+        for (let i = range[0]; i <= range[1]; i++) {
+            if (i === 444 || i === 460)
+                console.log(`${i}: ${input[i]}`);
+            map.push(input[i]);
+        }
+        const lowest = map.reduce((prev, acc) => acc < prev ? acc : prev);
+        const highest = map.reduce((prev, acc) => acc > prev ? acc : prev);
+        console.log("highest:", highest);
+        console.log("lowest:", lowest);
+        console.log("sum of low and high:", lowest + highest);
+        console.log("adding up each element of map:", map.reduce((prev, acc) => prev + acc));
+        console.log("validating against:", input[pointer]);
+    }
 }
-console.log(input[444] + input[459]);
