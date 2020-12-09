@@ -616,5 +616,5 @@ dotted black bags contain no other bags.
 vibrant plum bags contain 5 faded blue bags, 6 dotted black bags.
 dark olive bags contain 3 faded blue bags, 4 dotted black bags.`;
 const isTesting = false;
-const input = !isTesting ? properInput : testingInput;
+const input = !isTesting ? properInput : sampleInput;
 exports.default = input;

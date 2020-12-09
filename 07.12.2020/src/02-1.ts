@@ -43,32 +43,31 @@ const baggageClaim = ["shiny gold bags"]
 llooper(map, "shiny gold bags");
 // console.log(baggageClaim);
 
-let newArr = 1;
-let total = 0;
-baggageClaim.map((value, index) => {
-    const bag = map.get(value);
-    const entries = Object.entries(bag);
-    entries.forEach(([key, amount], index) => {
+// let newArr = 1;
+// let total = 0;
+// baggageClaim.map((value, index) => {
+//     const bag = map.get(value);
+//     const entries = Object.entries(bag);
+//     entries.forEach(([key, amount], index) => {
 
-        total += newArr * amount;
-        newArr = newArr * amount;
-    })
-})
+//         total += newArr * amount;
+//         newArr = newArr * amount;
+//     })
+// })
 // console.log(total);
 
-let tempArr = ["shiny gold bags"]
-let total2 = 0;
-while (tempArr.length) {
-    tempArr.shift();
-    total2++;
-    baggageClaim.forEach((value, index) => {
-        const bag = map.get(value);
-        const bagEntries = Object.entries(bag);
-        bagEntries.forEach(([key, amount], index) => {
-            for (let i = 0; i < amount; i++) {
-                tempArr.push(key);
-            }
-        })
+const baggageClaim3 = ["shiny gold bags"]
+let total3 = 0;
+console.log(map);
+while (baggageClaim3.length) {
+    const bag = baggageClaim3.shift();
+    total3++;
+    const subBags = map.get(bag);
+    if (!subBags) continue;
+    Object.entries(subBags).forEach(([key, amount]) => {
+        for (let i = 0; i < amount; i++) {
+            baggageClaim3.push(key);
+        }
     })
 }
-console.log(total2);
+console.log(total3);
